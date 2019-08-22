@@ -1,2 +1,17 @@
 <!--pages/aboutUs/aboutUs.wxml-->
-<text>pages/aboutUs/aboutUs.wxml</text>
+<view class="header">
+  <image class="header" mode="scaleToFill" src="../../images/aboutUs_Header.jpeg"></image>
+</view>
+
+<scroll-view class="weeklySpecial">
+<view class="weeklySpecial">
+  <view>Weekly Special</view>
+  <audio id="weeklySpecial" poster="{{song.poster}}" name="{{song.name}}" author="{{song.author}}" src="{{song.audio}}" action="{{audioAction}}" bindtimeupdate="audioTimeUpdated" controls loop></audio>
+</view>
+
+<view class="bottom">
+  <text class="version"> Version:0.0.1\n</text>
+  <text class="developer">Developer: Harley\n</text>  
+  <text class="right">SQRT All rights reserve</text>
+</view>
+</scroll-view>

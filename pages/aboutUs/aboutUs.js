@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
+    screenWidth:wx.getSystemInfoSync().windowWidth,
+    song:{
+      poster:"weeklySpecial/posters/poster.png",
+      name:"First Date",
+      author:"陈光荣",
+      audio:"weeklySpecial/audios/FirstDate.flac"
+    },
+    audioAction:{
+      method:"pause"
+    }
+  },
 
+  audioTimeUpdated: function (e) {
+    this.duration = e.detail.duration;
   },
 
   /**
