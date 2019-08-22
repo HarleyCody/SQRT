@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/check/check",
+    "pages/bill/bill",
+    "pages/aboutUs/aboutUs",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/check/check",
+        "text": "Check",
+        "iconPath": "images/check.png",
+        "selectedIconPath": "images/checkSelected.png"
+      },
+      {
+        "pagePath": "pages/bill/bill",
+        "text": "Bill",
+        "iconPath": "images/bill.png",
+        "selectedIconPath": "images/billSelected.png"
+      },
+      {
+        "pagePath": "pages/aboutUs/aboutUs",
+        "text": "About Us",
+        "iconPath": "images/aboutUs.png",
+        "selectedIconPath": "images/aboutUsSelected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
