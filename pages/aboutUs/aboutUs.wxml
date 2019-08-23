@@ -6,7 +6,9 @@
 <scroll-view class="weeklySpecial">
 <view class="weeklySpecial">
   <view>Weekly Special</view>
-  <audio id="weeklySpecial" poster="{{song.poster}}" name="{{song.name}}" author="{{song.author}}" src="{{song.audio}}" action="{{audioAction}}" bindtimeupdate="audioTimeUpdated" controls loop></audio>
+  <audio id="weeklySpecial" poster="{{song.poster}}" name="{{song.name}}" 
+  author="{{song.author}}" src="{{song.audio}}" action="{{audioAction}}"
+  bindtimeupdate="audioTimeUpdated" controls loop></audio>
 </view>
 
 <view class="bottom">

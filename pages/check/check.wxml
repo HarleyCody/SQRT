@@ -1,2 +1,53 @@
 <!--pages/check/check.wxml-->
-<text>pages/check/check.wxml</text>
+<view style="width:100%; height:50%">
+  <view class="checkDetails">Current Time: {{time}}</view>
+  <view class="textAndInput">
+    <text class="text">Subtotal:</text> 
+    <input class="input" type="digit" placeholder="{{placeholderSub}}" bindinput="subtotalling"/>
+    <text class="text"> dollar(s)</text>
+  </view>
+
+  <view class="textAndInput">
+    <text class="text">Service:</text>
+    <view class="radioView">
+    <radio-group class="radios" bindchange="chooseService">
+      <view class="radio" wx:for="{{servicesArray}}">
+        <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}" dataId="item.index"></radio>
+        <label class="label" for="{{item.name}}">
+          <text class='{{item.checked? "checked":"normal"}}'>{{item.name}}</text>
+        </label>
+      </view>
+    </radio-group>
+    </view>
+    <text class="text"></text>
+  </view>
+</view>
+
+<scroll-view style="background:#D6EAF8; width:100%; height:50%">
+  <view class="results">
+    <text class="text">Reserve integer?</text>
+    <view class="text">{{round}}</view>
+    <switch checked="{{isRound}}" bindchange="roundToInt"></switch>
+  </view>
+
+  <view class="results">
+    <text class="text">Tip:</text>
+    <input class="input" placeholder="{{tip}}" bindinput="newTip" value="{{TValue}}"></input>
+    <text class="text">dollar(s)</text>
+  </view>
+
+  <view class="results">
+    <text class="text">Total:</text>
+    <input class="input" placeholder="{{total}}" bindinput="newTotal" value="{{TotValue}}"></input>
+    <text class="text">dollar(s)</text>
+  </view>
+
+  <view class="results">
+    <text class="text" space="nbsp">Tip Rate:</text>
+    <input class="input" placeholder="{{tipRate}}" bindinput="newTipRate" value="{{TRValue}}"></input>
+    <text class="text">%</text>
+  </view>
+
+  <button class="pay" type="default" plain="flase" disabled="{{pay}}" bindtap="default" hover-class="other-button-hover" bindtap="Pay">Pay</button>
+
+</scroll-view>
