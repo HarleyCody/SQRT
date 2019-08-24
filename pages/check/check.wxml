@@ -1,9 +1,9 @@
 <!--pages/check/check.wxml-->
-<view style="width:100%; height:50%">
+<view style="width:100%; height:50%; background:#AED6F1">
   <view class="checkDetails">Current Time: {{time}}</view>
   <view class="textAndInput">
     <text class="text">Subtotal:</text> 
-    <input class="input" type="digit" placeholder="{{placeholderSub}}" bindinput="subtotalling"/>
+    <input class="input" type="digit" placeholder="{{placeholderSub}}" bindinput="newSubtotal"/>
     <text class="text"> dollar(s)</text>
   </view>
 
@@ -48,6 +48,6 @@
     <text class="text">%</text>
   </view>
 
-  <button class="pay" type="default" plain="flase" disabled="{{pay}}" bindtap="default" hover-class="other-button-hover" bindtap="Pay">Pay</button>
+  <button class="pay" disabled="{{pay}}" bindtap="default" hover-class="other-button-hover" bindtap="Pay">HapPay</button>
 
 </scroll-view>
