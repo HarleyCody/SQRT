@@ -1,5 +1,6 @@
 // pages/check/check.js
-
+import {Record} from '../../utils/record.js'
+const app = getApp();
 var util = require('../../utils/util.js');
 Page({
 
@@ -10,7 +11,18 @@ Page({
     placeholderSub:"Click to enter",
     servicesArray:[{name:'Poor', checked:false, val:10},{name:'Normal', checked:true, val:15}, {name:'Good', checked: false, val:18}, {name:'Awesome', checked:false, val:20}],
     isRound:false,
-    pay:false,
+    isSubtotal:false,
+    isTip:false,
+    isTipRate:false,
+    isTotal:false,
+    disablePay:true,
+    defualtTipRate:"",
+    staticTip:"",
+    staticTipRate:"",
+    staticTotal:"",
+    TRValue:"",
+    TotValue:"",
+    TValue:"",
   },
 /***************************************************************Action block***********************************************************************/
   /*
@@ -53,6 +65,7 @@ Page({
         icon: 'none',
         duration:800,
       })
+
     }
   },
   /*获取新 Tip*/
@@ -74,7 +87,7 @@ Page({
       this.calWithTip();
     } else {
       wx.showToast({
-        title: 'Invalid TipRate',
+        title: 'Invalid Tip',
         icon: 'none',
         duration: 800,
       })
@@ -100,7 +113,7 @@ Page({
       this.calWithTotal();
     } else {
       wx.showToast({
-        title: 'Invalid TipRate',
+        title: 'Invalid Total',
         icon: 'none',
         duration: 800,
       })
@@ -126,7 +139,7 @@ Page({
       this.calWithTipRate();
     } else {
       wx.showToast({
-        title: 'Invalid TipRate',
+        title: 'Invalid Tip Rate',
         icon: 'none',
         duration: 800,
       })
@@ -163,19 +176,34 @@ Page({
     }
   },
 
+  newPay:function(){
+    console.log("submit record");
+    var record = this.updateRecords();
+    wx.switchTab({
+       url: '../bills/bills',
+    })
+  },
+
   /************************************************************Validate block***********************************************************************/
 
   validateSub: function (subtotal) {
     if (!isNaN(Number(subtotal)) && Number(subtotal) > 0) {
       this.setData({
-        isSubtotal: true
+        isSubtotal: true,
+        disablePay:false,
       })
     }
     else {
       this.setData({
-        isSubtotal: false
+        isSubtotal: false,
+        diablePay:true,
       })
     }
+    this.setData({
+      isTip: false,
+      isTotal: false,
+      isTipRate: false
+    });
   },
 
   validateTipRate: function (tipRate) {
@@ -189,6 +217,10 @@ Page({
         isTipRate: false
       })
     }
+    this.setData({
+      isTip: false,
+      isTotal: false,
+    });
   },
 
   validateTip: function (t) {
@@ -202,6 +234,10 @@ Page({
         isTip: false
       })
     }
+    this.setData({
+      isTotal: false,
+      isTipRate: false
+    });
   },
 
   validateTotal: function (total) {
@@ -215,6 +251,10 @@ Page({
         isTotal: false
       })
     }
+    this.setData({
+      isTip: false,
+      isTipRate: false
+    });
   },
 
   /*********************************************************************caculate block***************************************************************/
@@ -349,7 +389,21 @@ Page({
     }
   },
 
-  /*****************************************************************Others      ***************************************************************************/
+  /*****************************************************************Local Storage********************************************************************/
+  updateRecords:function(){
+    var time = this.data.time;
+    var sub = this.data.subtotal;
+    var ti = this.data.isTip? this.data.TValue : this.data.tip;
+    var total = this.data.isTotal? this.data.TotValue : this.data.total;
+    var tr = this.data.isTipRate? this.data.TRValue : this.data.tipRate;
+    tr = Math.floor(Number(tr)*1000)/1000;
+    var record =new Record(time,sub,ti,total,tr);
+    console.log("record is " + record);
+    var records = wx.getStorageSync("records")|| [];
+    records.unshift(record);
+    wx.setStorageSync('records', records);
+    return record;
+  },
 
   /*****************************************************************Life Cycle***********************************************************************/
   /**
@@ -375,7 +429,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var time = util.formatTime(new Date());
+    this.setData({
+      time : time
+    })    
   },
 
   /**

@@ -1,0 +1,8 @@
+<!--pages/bills/bills.wxml-->
+<view class= "recordContainer">
+  <block wx:for="{{records}}" wx:for-item="record">
+    <text class="recordContent" space ="ensp">{{index + 1}}. {{record}} </text>
+    <text class="interval"></text>
+  </block>
+</view>
+<button class="clearbtn" bindtap="clearRecords" hover-class="other-button-hover">Clear All Record</button>

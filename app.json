@@ -2,13 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/check/check",
-    "pages/bill/bill",
+    "pages/bills/bills",
     "pages/aboutUs/aboutUs",
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "backgroundColor":"#EAF2F8",
+    "backgroundColor": "#EAF2F8",
     "navigationBarBackgroundColor": "#ECF0F1",
     "navigationBarTitleText": "SQRT",
     "navigationBarTextStyle": "black",
@@ -24,7 +24,7 @@
         "selectedIconPath": "images/checkSelected.png"
       },
       {
-        "pagePath": "pages/bill/bill",
+        "pagePath": "pages/bills/bills",
         "text": "Bill",
         "iconPath": "images/bill.png",
         "selectedIconPath": "images/billSelected.png"

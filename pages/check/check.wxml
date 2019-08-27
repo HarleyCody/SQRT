@@ -32,22 +32,22 @@
 
   <view class="results">
     <text class="text">Tip:</text>
-    <input class="input" placeholder="{{tip}}" bindinput="newTip" value="{{TValue}}"></input>
+    <input class="input" type="digit" placeholder="{{tip}}" bindinput="newTip" value="{{TValue}}"></input>
     <text class="text">dollar(s)</text>
   </view>
 
   <view class="results">
     <text class="text">Total:</text>
-    <input class="input" placeholder="{{total}}" bindinput="newTotal" value="{{TotValue}}"></input>
+    <input class="input" type="digit" placeholder="{{total}}" bindinput="newTotal" value="{{TotValue}}"></input>
     <text class="text">dollar(s)</text>
   </view>
 
   <view class="results">
     <text class="text" space="nbsp">Tip Rate:</text>
-    <input class="input" placeholder="{{tipRate}}" bindinput="newTipRate" value="{{TRValue}}"></input>
+    <input class="input" type="digit" placeholder="{{tipRate}}" bindinput="newTipRate" value="{{TRValue}}"></input>
     <text class="text">%</text>
   </view>
 
-  <button class="pay" disabled="{{pay}}" bindtap="default" hover-class="other-button-hover" bindtap="Pay">HapPay</button>
+  <button class="pay" disabled="{{disablePay}}" bindtap="newPay" hover-class="other-button-hover">HapPay</button>
 
 </scroll-view>
